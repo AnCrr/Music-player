@@ -14,11 +14,15 @@ const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${cli
 const makeAuthorizedRequest = async (accessToken: string) => {
   console.log("it worked");
 
-  const accessResponse = await axios.get("https://api.spotify.com/v1/me", {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
+  const accessResponse = await axios.get(
+    "https://api.spotify.com/v1/me",
+
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
 
   return accessResponse;
 };
@@ -48,35 +52,34 @@ export const fetchAccessToken = async (code) => {
 
 async function handleButtonClick() {
   const accessToken = localStorage.getItem("accessToken");
-  console.log("clicked", accessToken);
-  if (!accessToken) {
-    window.location.href = authorizationUrl;
-
-    // console.log("");
-  }
+  // console.log("clicked", accessToken);
+  // if (!accessToken) {
+  //   window.location.href = authorizationUrl;
+  // }
 
   if (accessToken) {
     const expiresAt = localStorage.getItem("expiresAt");
     if (expiresAt && parseInt(expiresAt) > Date.now()) {
       makeAuthorizedRequest(accessToken);
+      window.location.href = "http://localhost:5173/test";
     } else {
       window.location.href = authorizationUrl;
-      const code = new URL(window.location.href).searchParams.get("code");
-      await fetchAccessToken(code);
+      // const code = new URL(window.location.href).searchParams.get("code");
+      // await fetchAccessToken(code);
     }
   } else {
     window.location.href = authorizationUrl;
     // console.log("fetching");
-    const code = new URL(window.location.href).searchParams.get("code");
-    await fetchAccessToken(code);
+    // const code = new URL(window.location.href).searchParams.get("code");
+    // await fetchAccessToken(code);
   }
 }
 
 const Home: React.FC<RouteProps> = () => {
   return (
     <div>
-      Home
-      <button onClick={handleButtonClick}>Log In</button>
+      <span className="neon">Music app which inspires</span>
+      {/* <button onClick={handleButtonClick}>Log In</button> */}
     </div>
   );
 };

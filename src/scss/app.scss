@@ -1,4 +1,72 @@
 @import './variables.scss';
 @import './libs/normalize.scss';
 
+// img {
+//     height: 110px;
+//     width: 110px;
+// }
 
+.layout {
+    display: flex;
+    flex-direction: column;
+    // height: 400px;
+    height: 100vh;
+  
+    &__header {
+      background-color: rgb(30, 28, 32);
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding-inline: 20px;
+  
+      &__logo {
+        height: 45px;
+        width: 45px;
+        margin-right: 10px;
+      }
+      &__title {
+        font-size: 40px;
+        font-weight: bold;
+        color: rgb(233, 233, 233);
+       
+    }
+  
+    
+  }
+  &__content {
+    //   flex: 1;
+      display: flex;
+      justify-content: center;
+        align-items: center;
+    //   background-color: #eee;
+    //   padding: 10px;
+    // background-color: rgb(254, 241, 245);
+    height: 100%;
+    background-image: url("src/assets/wall.jpeg");
+    background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+    }
+  
+}
+@keyframes neon {
+    from {
+      text-shadow: 0 0 5px #d400ff, 0 0 10px #d400ff, 0 0 15px #d400ff, 0 0 20px #d400ff, 0 0 25px #d400ff;
+    }
+    to {
+      text-shadow: 0 0 5px #d400ff, 0 0 30px #d400ff, 0 0 5px #d400ff, 0 0 20px #d400ff, 0 0 55px #d400ff,
+                   0 0 5px #d400ff, 0 0 30px #d400ff, 0 0 5px #d400ff, 0 0 20px #d400ff, 0 0 55px #d400ff;
+    }
+  }
+
+.neon {
+    // font-size: 54px;
+    font-family:'Brush Script MT';
+   background-color: #00000042;
+    animation: neon 1s ease-in-out infinite alternate;
+    font-size: 94px;
+  color: rgb(248, 226, 254);
+  text-shadow: 0 0 5px #ff00e6, 0 0 10px #ff00ea, 0 0 15px #ff00f7;
+//   animation: neon 1s ease-in-out infinite alternate;
+  }
+  

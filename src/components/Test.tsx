@@ -21,13 +21,16 @@ import { fetchAccessToken } from "./Home";
 
 const Test = () => {
   const code = new URL(window.location.href).searchParams.get("code");
+  const testFunc = async () => {
+    await fetchAccessToken(code);
+  };
   if (code) {
-    const res = fetchAccessToken(code).then((item) =>
-      console.log("item", item)
-    );
-  } else {
-    console.log("code", code);
+    // const res = await fetchAccessToken(code);
+    testFunc();
   }
+  // else {
+  //   console.log("code", code);
+  // }
 
   return <div>TEST</div>;
 };
