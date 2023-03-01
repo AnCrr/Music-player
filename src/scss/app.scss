@@ -1,72 +1,123 @@
-@import './variables.scss';
-@import './libs/normalize.scss';
-
-// img {
-//     height: 110px;
-//     width: 110px;
-// }
+@import "./variables.scss";
+@import "./libs/normalize.scss";
 
 .layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .header {
+    background-color: rgb(30, 28, 32);
+    height: 70px;
     display: flex;
-    flex-direction: column;
-    // height: 400px;
-    height: 100vh;
-  
-    &__header {
-      background-color: rgb(30, 28, 32);
-      height: 70px;
+    flex-direction: raw;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+
+    &__logo {
       display: flex;
       align-items: center;
-      padding-inline: 20px;
-  
-      &__logo {
+
+      img {
         height: 45px;
         width: 45px;
         margin-right: 10px;
       }
-      &__title {
+      h2 {
         font-size: 40px;
         font-weight: bold;
         color: rgb(233, 233, 233);
-       
+      }
     }
-  
-    
-  }
-  &__content {
-    //   flex: 1;
+
+    &__profile {
       display: flex;
-      justify-content: center;
-        align-items: center;
-    //   background-color: #eee;
-    //   padding: 10px;
-    // background-color: rgb(254, 241, 245);
-    height: 100%;
-    background-image: url("src/assets/wall.jpeg");
-    background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-    }
-  
-}
-@keyframes neon {
-    from {
-      text-shadow: 0 0 5px #d400ff, 0 0 10px #d400ff, 0 0 15px #d400ff, 0 0 20px #d400ff, 0 0 25px #d400ff;
-    }
-    to {
-      text-shadow: 0 0 5px #d400ff, 0 0 30px #d400ff, 0 0 5px #d400ff, 0 0 20px #d400ff, 0 0 55px #d400ff,
-                   0 0 5px #d400ff, 0 0 30px #d400ff, 0 0 5px #d400ff, 0 0 20px #d400ff, 0 0 55px #d400ff;
+      width: 150px;
+      align-items: center;
+      justify-content: space-between;
+      &__photo {
+        height: 40px;
+        width: 40px;
+        img {
+          height: 100%;
+          width: 100%;
+          border: 1px solid black;
+          border-radius: 50%;
+        }
+      }
+      &__greeting {
+        color: rgb(148, 146, 146);
+      }
     }
   }
 
-.neon {
-    // font-size: 54px;
-    font-family:'Brush Script MT';
-   background-color: #00000042;
-    animation: neon 1s ease-in-out infinite alternate;
-    font-size: 94px;
-  color: rgb(248, 226, 254);
-  text-shadow: 0 0 5px #ff00e6, 0 0 10px #ff00ea, 0 0 15px #ff00f7;
-//   animation: neon 1s ease-in-out infinite alternate;
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    // background-image: url("src/assets/wall.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
-  
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 5px #d400ff, 0 0 10px #d400ff, 0 0 15px #d400ff,
+      0 0 20px #d400ff, 0 0 25px #d400ff;
+  }
+  to {
+    text-shadow: 0 0 5px #d400ff, 0 0 30px #d400ff, 0 0 5px #d400ff,
+      0 0 20px #d400ff, 0 0 55px #d400ff, 0 0 5px #d400ff, 0 0 30px #d400ff,
+      0 0 5px #d400ff, 0 0 20px #d400ff, 0 0 55px #d400ff;
+  }
+}
+
+.login {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  // justify-items: center;
+  align-items: center;
+  background-image: url("src/assets/wall.jpeg");
+  &__block {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    width: 70%;
+    text-align: center;
+    margin: auto;
+  }
+  &__title {
+    &.login__title-neon {
+      font-family: "Brush Script MT";
+      background-color: #00000042;
+      animation: neon 1s ease-in-out infinite alternate;
+      font-size: 5em;
+      color: rgb(248, 226, 254);
+      text-shadow: 0 0 5px #ff00e6, 0 0 10px #ff00ea, 0 0 15px #ff00f7;
+    }
+  }
+  &__btn {
+    max-width: 300px;
+    margin-top: 20px;
+    padding: 10px 15px;
+    font-family: "Brush Script MT";
+    font-size: 2em;
+    align-self: center;
+    cursor: pointer;
+    background-color: rgb(30, 28, 32);
+    color: rgb(233, 233, 233);
+    font-weight: 600;
+    border: 2px solid rgb(233, 233, 233);
+  }
+}
+
+.home {
+  height: 100vh;
+  width: 100vw;
+  background-color: #ecf9f2;
+}
