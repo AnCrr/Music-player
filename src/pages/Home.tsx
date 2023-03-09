@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { fetchAccessToken } from "./AuthPage";
 import axios, { AxiosResponse } from "axios";
-import { useMeState } from "./states";
+import { useMeState, usePlaylistsState } from "../components/states";
+import SideBar from "../components/SideBar";
 
 interface IUser {
   country: string;
@@ -33,12 +34,15 @@ interface IUser {
 }
 
 const Home = () => {
-  const [playlists, setPlaylists] = useState([]);
+  // const [playlists, setPlaylists] = useState([]);
   const [user, setUser] = useState({});
   const code = new URL(window.location.href).searchParams.get("code");
 
   const { setGeneral } = useMeState((state) => ({
     setGeneral: state.setGeneral,
+  }));
+  const { setPlaylists } = usePlaylistsState((state) => ({
+    setPlaylists: state.setPlaylists,
   }));
 
   const accessToken = localStorage.getItem("accessToken");
@@ -76,9 +80,11 @@ const Home = () => {
         console.error("Error getting my playlists", error);
       }
     };
+
     if (accessToken) {
       getMyUserData();
-      getMyPlaylists();
+      const playlists = getMyPlaylists();
+      setPlaylists(playlists);
       // axios
       //   .get("https://api.spotify.com/v1/me", options)
       //   .then((response) => {
@@ -105,7 +111,13 @@ const Home = () => {
     fetchToken();
   }
 
-  return <div className="home"></div>;
+  return (
+    <div className="home">
+      {/* <div className="sidebar">sidebar</div> */}
+
+      <div className="content">content</div>
+    </div>
+  );
 };
 
 export default Home;

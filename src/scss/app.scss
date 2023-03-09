@@ -3,6 +3,9 @@
 
 .layout {
   display: flex;
+  // display: grid;
+  // grid-template-rows: 10% 90%;
+  overflow: hidden;
   flex-direction: column;
   height: 100vh;
 
@@ -10,7 +13,7 @@
     background-color: rgb(30, 28, 32);
     height: 70px;
     display: flex;
-    flex-direction: raw;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
@@ -32,6 +35,7 @@
     }
 
     &__profile {
+      z-index: 20;
       display: flex;
       width: 150px;
       align-items: center;
@@ -52,15 +56,24 @@
     }
   }
 
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  // .content {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   height: 100%;
+  //   // background-image: url("src/assets/wall.jpeg");
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   background-position: center;
+  // }
+  &__content {
+    width: 100%;
     height: 100%;
-    // background-image: url("src/assets/wall.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: rgb(62, 41, 82);
+  }
+  &__main {
+    display: flex;
+    height: 100%;
   }
 }
 
@@ -117,7 +130,109 @@
 }
 
 .home {
-  height: 100vh;
-  width: 100vw;
-  background-color: #ecf9f2;
+  display: flex;
+}
+.sidebar {
+  background-color: rgb(41, 30, 50);
+  display: flex;
+  border-right: #0c020f 4px solid;
+  flex-direction: row;
+  z-index: 2;
+
+  &__navigation {
+    width: 100%;
+    height: 22%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  &__link {
+    &--home {
+      display: grid;
+      grid-template-columns: 20% 80%;
+      a {
+        grid-column-start: 2;
+        color: $white;
+        margin: auto 0;
+      }
+      svg {
+        margin: auto auto;
+        color: $white;
+        font-size: x-large;
+      }
+    }
+    &--playlists {
+      display: grid;
+      grid-template-columns: 20% 80%;
+      a {
+        grid-column-start: 2;
+        margin: auto 0;
+        color: $white;
+      }
+      svg {
+        margin: auto auto;
+        color: $white;
+        font-size: x-large;
+      }
+    }
+    &--search {
+      display: grid;
+      grid-template-columns: 20% 80%;
+      a {
+        grid-column-start: 2;
+        color: $white;
+        margin: auto 0;
+      }
+      svg {
+        margin: auto auto;
+        color: $white;
+        font-size: x-large;
+      }
+    }
+  }
+}
+
+.drag-handle {
+  position: absolute;
+  right: -6px;
+  width: 10px;
+  flex-basis: 6px;
+  cursor: col-resize;
+  resize: horizontal;
+  background: #c1c3c5b4;
+  &:hover {
+    width: 15px;
+    background: #c1c3c5b4;
+  }
+}
+.drag-handle:hover {
+  width: 15px;
+  background: #c1c3c5b4;
+}
+
+.playlists {
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+}
+
+.playlist-card {
+  max-height: 300px;
+  width: 200px;
+  background-color: #17102082;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 10px;
+
+  &__cover {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  span {
+    color: $white;
+  }
 }
