@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { fetchAccessToken } from "./AuthPage";
 import axios, { AxiosResponse } from "axios";
-import { useMeState, usePlaylistsState } from "../components/states";
+import {
+  useMeState,
+  usePlaylistsState,
+  useCategoriesState,
+} from "../components/states";
 import SideBar from "../components/SideBar";
 
 interface IUser {
@@ -44,6 +48,9 @@ const Home = () => {
   const { setPlaylists } = usePlaylistsState((state) => ({
     setPlaylists: state.setPlaylists,
   }));
+  const { setCategories } = useCategoriesState((state) => ({
+    setCategories: state.setCategories,
+  }));
 
   const accessToken = localStorage.getItem("accessToken");
 
@@ -80,11 +87,23 @@ const Home = () => {
         console.error("Error getting my playlists", error);
       }
     };
+    const getCatefories = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.spotify.com/v1/browse/categories",
+          options
+        );
+        setCategories(response.data.categories.items);
+      } catch (error) {
+        console.error("Error getting my playlists", error);
+      }
+    };
 
     if (accessToken) {
       getMyUserData();
-      const playlists = getMyPlaylists();
-      setPlaylists(playlists);
+      getMyPlaylists();
+      getCatefories();
+      // setPlaylists(playlists);
       // axios
       //   .get("https://api.spotify.com/v1/me", options)
       //   .then((response) => {

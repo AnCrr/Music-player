@@ -13,6 +13,10 @@ export const useMeState = create<IMeState>((set) => ({
   setGeneral: (value: any) => set(() => ({ general: value })),
 }));
 export const usePlaylistsState = create((set) => ({
-  playlists: null,
+  playlists: [],
   setPlaylists: (value: any) => set(() => ({ playlists: value })),
+}));
+export const useCategoriesState = create((set) => ({
+  categories: [],
+  setCategories: (value: any) => set(() => ({ categories: value })),
 }));
