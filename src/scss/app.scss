@@ -94,7 +94,6 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  // justify-items: center;
 
   align-items: center;
   background-image: url("src/assets/wall2.jpg");
@@ -144,7 +143,7 @@
 
   &__navigation {
     width: 100%;
-    height: 22%;
+    height: 15%;
     display: flex;
     flex-direction: column;
     padding-left: 10px;
@@ -259,7 +258,7 @@
 
 .categories {
   display: grid;
-  // grid-template-columns: repeat(4, 1fr);
+
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-gap: 20px;
   padding: 50px;
@@ -289,17 +288,25 @@
     width: 80%;
     height: 80%;
     align-self: center;
+    padding-left: 10px;
   }
 
   span {
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    padding: 10px;
+    padding: 21px;
     color: rgba(233, 233, 233, 0.717);
   }
   img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    cursor: pointer;
+    transition: box-shadow 0.5s ease, width 0.5s ease, height 0.5s ease;
+    &:hover {
+      box-shadow: 0 0 10px 5px rgba(244, 209, 253, 0.3);
+      width: 101%;
+      height: 101%;
+    }
   }
 }

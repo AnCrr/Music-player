@@ -6,12 +6,11 @@ const Playlists = () => {
   const { playlists } = usePlaylistsState((state) => ({
     playlists: state.playlists,
   }));
-  console.log("playlists", playlists);
 
   return (
     <div className="playlists">
       {playlists.map((playlist) => (
-        <PlaylistCard data={playlist} />
+        <PlaylistCard key={playlist.id} playlist={playlist} />
       ))}
     </div>
   );

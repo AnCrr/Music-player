@@ -25,7 +25,7 @@ const makeAuthorizedRequest = async (accessToken: string) => {
   return accessResponse;
 };
 
-export const fetchAccessToken = async (code) => {
+export const fetchAccessToken = async (code: string | null) => {
   const response = await axios.post(
     "https://accounts.spotify.com/api/token",
     {

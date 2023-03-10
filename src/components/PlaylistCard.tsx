@@ -1,11 +1,18 @@
 import React from "react";
+import { IPlaylist } from "../components/states";
 
-const PlaylistCard = ({ data }) => {
-  const cover = data.images[0].url;
+interface IProps {
+  key: string;
+  playlist: IPlaylist;
+}
+
+const PlaylistCard = ({ playlist }: IProps) => {
+  const { name, images } = playlist;
+  const cover = images[0].url;
   return (
     <div className="playlist-card">
       <img className="playlist-card__cover" src={cover} />
-      <span>{data.name}</span>
+      <span>{name}</span>
     </div>
   );
 };

@@ -103,23 +103,6 @@ const Home = () => {
       getMyUserData();
       getMyPlaylists();
       getCatefories();
-      // setPlaylists(playlists);
-      // axios
-      //   .get("https://api.spotify.com/v1/me", options)
-      //   .then((response) => {
-      //     // const { display_name } = response.data;
-      //     setGeneral({
-      //       name: response.data.display_name,
-      //       image: response.data.images[0].url,
-      //     });
-      //     console.log("DATA", response);
-      //     // const { items } = response.data;
-      //     // setPlaylists(items);
-      //     // setDisplayName(display_name);
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //   });
     }
   }, []);
 

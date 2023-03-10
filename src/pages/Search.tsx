@@ -13,23 +13,16 @@ const Search = () => {
     category.name.toLowerCase().includes(query.toLowerCase())
   );
 
-  console.log("categories", categories);
-
   return (
     <div className="categories">
       <input
-        placeholder="Search"
+        placeholder="Search . . ."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
       {filteredCategories.map((category) => (
-        //   <li key={category.name}>{category.name}</li>
-        <CategoryCard data={category} />
+        <CategoryCard key={category.id} category={category} />
       ))}
-      {/* {categories.map((category) => (
-        
-        <CategoryCard data={category} />
-      ))} */}
     </div>
   );
 };
